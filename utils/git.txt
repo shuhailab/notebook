@@ -1,0 +1,42 @@
+1. 创建并且进入新的目录
+2. git init #将当前目录设置为git可以管理的仓库
+3. git add readme.txt #把文件添加到仓库 
+4. git commit -m "wrote a readme file" #用命令git commit告诉git，把文件提交到仓库
+
+git add file1.txt
+git add file2.txt file2.txt #可以一次添加多个文件
+git commit -m "add 3 files."
+
+5. git status #查看仓库当前状态
+6. git log 或者git log --pretty=oneline #查看从最近到最远的提交日志
+7. git reset --hard HEAD^ #表示回退到上一个版本中 HEAD表示当前版本 HEAD^^上上一个版本 HEAD~100前100个版本
+8. git reset --hard 4f61e06fcce9a1bfd31529a1097f15a13d8d00ff #回到某个版本
+9. git reflog #查看git的历史命令
+10. git add #把文件修改添加到暂存区
+11. git commit #一次性把暂存区的所有修改提交到分支
+12. git checkout -- readme.txt #撤销修改
+13. git reset HEAD readme.txt #删除已经修改并且添加到缓存区的修改 HEAD表示最新版本
+
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+14. git checkout -- test.txt #工作区中的test.txt文件已经删除，可以用版本库里面的test.txt文件恢复到工作区中的文件
+15. git remote add origin git@github.com:michaelliao/learngit.git #将本地的仓库与远程仓库关联 origin远程库的名字，michaelliao远程的github仓库名称
+16. git push -u origin master 将本地仓库的所有内容推送到远程仓库 第二次推送可以使用简化命令:git push origin master
+17. git remote -v #查看远程库的信息
+18. git remote rm origin #删除远程库 本质是解除本地库和远程库的绑定
+19. git clone git@github.com:michaelliao/gitskills.git #从远程克隆仓库到本地
+20. git checkout -b dev #b参数表示创建并且切换分支，相当于git branch dev/git checkout dev
+21. git branch #查看分支状态
+22. git checkout master #切换到master分支
+23. git merge dev #表示合并制定分支
+24. git log --graph --pretty=oneline --abbrev-commit
+25. git merge --no-ff -m "merge with no-ff" dev #Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息
+26. git stash #保存现场
+27. git tag v1.0/git tag #切换到某个分支，打上标签，查看所有打过的标签
+28. git tag v0.9 fsdlj23 / git show v0.9 
+29. git tag -a v0.1 -m "version 0.1 released" 1094adb #给标签加上说明文字
+30. git tag -d v0.1 #删除标签
+31. git push origin v1.0 将本地某个标签推送到远程
+
