@@ -1,0 +1,15 @@
+task: 'test'
+
+hydra:
+  run:
+    dir: logs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${hydra.run.dir}
+    subdir: ${hydra.job.num}_${hydra.job.override_dirname}/seed=${seed}
+  output_subdir: hydra_configs
+  job:
+    name: wrist
+    config:
+      override_dirname:
+        exclude_keys:
+          - seed
